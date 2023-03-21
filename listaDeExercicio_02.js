@@ -15,22 +15,32 @@
     -Acima de 40 Obsidade grave;
 */
 
-let peso = 70;
-let altura = 1.76;
-let imc = (peso / (altura * altura)).toFixed(2);
-
-function mostra(imc) {
-    return console.log(imc) //crie uma função mostra, para não precisar ficar repetindo o console.log
+function calarImc(peso, altura) {
+    return (peso / (altura * altura)).toFixed(2);
 }
 
-if (imc < 18.5) {
-    mostra(`o IMC ${imc} esta abaixo do peso!`);
-} else if (imc >= 18.5 && imc <= 25) {
-    mostra(`o IMC ${imc} esta no peso normal!`);
-} else if (imc >= 25 && imc <= 30) {
-    mostra(`o IMC ${imc} esta acima do peso!`);
-} else if (imc >= 30 && imc <= 40) {
-    mostra(`o IMC ${imc} esta em situação de obesidade! `);
-} else if (imc > 40) {
-    mostra(`o IMC ${imc} esta em situação de obesidade GRAVE!`)
+function classificarImc(imc) {
+    if (imc < 18.5) {
+        return `o IMC ${imc} esta abaixo do peso!`;
+    } else if (imc >= 18.5 && imc <= 25) {
+        return `o IMC ${imc} esta no peso normal!`;
+    } else if (imc >= 25 && imc <= 30) {
+        return `o IMC ${imc} esta acima do peso!`;
+    } else if (imc >= 30 && imc <= 40) {
+        return `o IMC ${imc} esta em situação de obesidade! `;
+    } else if (imc > 40) {
+        return `o IMC ${imc} esta em situação de obesidade GRAVE!`
+    }
 }
+//main
+(function main() {
+    let peso = 70;
+    let altura = 1.76;
+    let imc = calarImc(peso, altura);
+    console.log(classificarImc(imc))
+})();
+
+
+
+
+
