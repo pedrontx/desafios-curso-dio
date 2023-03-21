@@ -10,26 +10,40 @@
     -Em duas vezes, preço normal de etiqueta sem juros;
     -Acima de duas vezes, preço normal de etiqueta mais juros de 10%;
 */
-let precoEtiqueta = 100
-let formaDePagamento = 4
-let desconto
-/*as formas de pagamento
- 1=debito
- 2=dinheiro ou pix
- 3=parcela duas vezes
- 4=parcelar acima de 3 vezes
-
-*/
-
-if (formaDePagamento === 1) {
-    desconto = 10
-    console.log(`O preço final na forma de pagamento debito é: ${precoEtiqueta - ((desconto / 100) * precoEtiqueta)}`)
-} else if (formaDePagamento ===  2) {
-    desconto = 15
-    console.log( `O preço final na forma de pagamento dinheiro ou pix: ${precoEtiqueta - ((desconto / 100) * precoEtiqueta)}` )
-} else if (formaDePagamento === 3) {
-    console.log(`O preço final na forma de pagamento dividido em duas vezes é: ${precoEtiqueta}`)
-} else if (formaDePagamento >= 4) {
-    desconto = 10
-    console.log(`${precoEtiqueta + ((desconto / 100) * precoEtiqueta)}`)
+//essa função calcula  o desconto dependendo da forma de pagamento 
+function calculaEDesconto(precoEtiqueta, desconto){
+    return (desconto / 100) * precoEtiqueta
 }
+//essa função calcula o juros dependendo da forma de pagamento
+function calculaJuros (precoEtiqueta, desconto){
+    return (desconto / 100) * precoEtiqueta
+
+}
+
+//essa função classifica a forma de pagamento 
+function classificaFormaDePagamento (precoEtiqueta, formaDePagamento){
+    if (formaDePagamento === 1) {
+        desconto = 10
+        return `O preço final na forma de pagamento debito é: ${precoEtiqueta - calculaDesconto(precoEtiqueta, desconto)}`
+    } else if (formaDePagamento ===  2) {
+        desconto = 15
+        return `O preço final na forma de pagamento dinheiro ou pix: ${precoEtiqueta - calculaDesconto(precoEtiqueta, desconto)}` 
+    } else if (formaDePagamento === 3) {
+        return `O preço final na forma de pagamento dividido em duas vezes é: ${precoEtiqueta}`
+    } else if (formaDePagamento >= 4) {
+        desconto = 10
+        return` O preço final na forma de pagamento dividido em mais de duas vezes é: ${precoEtiqueta + calculaJuros(precoEtiqueta, desconto)}`
+    }
+}
+//essa função é a função main. ela é uma função auto execultavel 
+(function main (){
+    let precoEtiqueta = 100
+    let formaDePagamento = 3;
+    let desconto = 0
+    let classifica = classificaFormaDePagamento(precoEtiqueta, formaDePagamento)
+    console.log(classifica)
+})()
+
+
+
+
